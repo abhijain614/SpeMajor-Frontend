@@ -31,7 +31,7 @@ app.get('/get-record', function(req, res) {
 
 	const { id } = req.query;
 
-	yelpAPI(`/businesses/${ id }`).then(({ data }) => {
+	yelpAPI(`/storagepoint/${ id }`).then(({ data }) => {
 
 		res.send(JSON.stringify(data));
 	});
@@ -41,19 +41,19 @@ app.get('/get-reviews', function(req, res) {
 
 	const { id } = req.query;
 	//console.log(id);
-	yelpAPI(`/businesses/${ id }/reviews`).then(({ data }) => {
+	yelpAPI(`/storagepoint/${ id }/reviews`).then(({ data }) => {
 
 		res.send(JSON.stringify(data));
 	});
 });
 
-app.get('/get-categories', function(req, res) {
+// app.get('/get-categories', function(req, res) {
 
-	yelpAPI("/categories").then(({ data }) => {
+// 	yelpAPI("/categories").then(({ data }) => {
 
-		res.send(JSON.stringify(data));
-	});
-});
+// 		res.send(JSON.stringify(data));
+// 	});
+// });
 
 app.get('/get-records', function(req, res) {
 
@@ -68,7 +68,7 @@ app.get('/get-records', function(req, res) {
 	};
 
 	yelpAPI("/storagepoint/getall", { params: params }).then(({ data }) => {
-
+		
 		const allRecords = parseDetails(data);
 		res.send(JSON.stringify({ allRecords, center: data.region.center }));
 	});

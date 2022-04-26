@@ -68,7 +68,7 @@ const ViewPlace = ({}) => {
 				<IonToolbar>
 
 					<IonButtons slot="start">
-						<IonBackButton text="All places" />
+						<IonBackButton text="Back" />
 					</IonButtons>
 					<IonTitle>{ record.distance } miles away</IonTitle>
 				</IonToolbar>
@@ -98,7 +98,7 @@ const ViewPlace = ({}) => {
 				</IonHeader>
 				
 				<IonGrid>
-					<IonRow className={ styles.categoryContainer }>
+					{/* <IonRow className={ styles.categoryContainer }>
 						<IonCol size="8">
 							{ (extendedRecord.categories && extendedRecord.categories.length > 0) && extendedRecord.categories.map((category, index) => {
 
@@ -113,7 +113,7 @@ const ViewPlace = ({}) => {
 						<IonCol size="4" className="ion-justify-content-between">
 							<a href={ record.url } target="_blank" rel="noreferrer">View on Yelp &rarr;</a>
 						</IonCol>	
-					</IonRow>
+					</IonRow> */}
 
 					<IonRow className="ion-margin-top">
 						<IonCol size="6">
@@ -150,7 +150,7 @@ const ViewPlace = ({}) => {
 								return (
 
 									<IonCol key={ index } size="4">
-										<div className={ styles.cardImage } style={{ backgroundImage: `url(${ photo })` }}/>
+										<div className={ styles.cardImage } style={{ backgroundImage: `url(${ photo.id })` }}/>
 									</IonCol>
 								);
 							}
@@ -178,7 +178,7 @@ const ViewPlace = ({}) => {
 												</IonAvatar>
 												<IonCardSubtitle>{ review.user.name }</IonCardSubtitle>
 
-												<IonButton color="primary">Full review on Yelp &rarr;</IonButton>
+												{/* <IonButton color="primary">Full review on Yelp &rarr;</IonButton> */}
 											</IonRow>
 											<p className="ion-padding-top">{ review.text }</p>
 										</IonLabel>

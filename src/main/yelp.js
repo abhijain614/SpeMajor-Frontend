@@ -19,16 +19,16 @@ export const getRecord = async recordId => {
 	console.log(response);
 	const data = await response.json();
 
-	const response2 = await fetch(`http://172.16.129.244:4000/get-reviews?id=${ recordId }`);
-	const data2 = await response2.json();
+	// const response2 = await fetch(`http://172.16.129.244:4000/get-reviews?id=${ recordId }`);
+	// const data2 = await response2.json();
 
-	data.reviews = data2.reviews;
+	// data.reviews = data2.reviews;
 	return data;
 }
 
-export const getCategories = async () => {
+// export const getCategories = async () => {
 
-	const response = await fetch(`http://172.16.129.244:4000/get-categories`);
-	const data = await response.json();
-	return data;
-}	
+// 	const response = await fetch(`http://172.16.129.244:4000/get-categories`);
+// 	const data = await response.json();
+// 	return data;
+// }	
