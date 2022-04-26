@@ -32,13 +32,13 @@ const App = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
+          
           <Route exact path="/map">
             <Tab1 />
           </Route>
           <Route exact path="/list">
             <Tab2 />
           </Route>
-
           <Route exact path="/list/:id">
             <ViewPlace />
           </Route>

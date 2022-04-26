@@ -9,6 +9,7 @@ export const getRecords = async (currentPoint) => {
 	var latitude = currentPoint.latitude, longitude = currentPoint.longitude, radius = 1000, offset = 0;
 	const response = await fetch(`http://172.16.129.244:4000/get-records?latitude=${ latitude }&longitude=${ longitude }&radius=${ radius }&offset=${ offset }`);
 	const data = await response.json();
+	console.log(data);
 	setStore(data);
 }  
 

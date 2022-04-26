@@ -112,7 +112,7 @@ const ViewPlace = ({}) => {
 
 						<IonCol size="4" className="ion-justify-content-between">
 							<a href={ record.url } target="_blank" rel="noreferrer">View on Yelp &rarr;</a>
-						</IonCol>
+						</IonCol>	
 					</IonRow>
 
 					<IonRow className="ion-margin-top">

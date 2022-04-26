@@ -15,15 +15,16 @@ app.listen(process.env.PORT || 4000, function() {
 //	DON'T LEAVE THIS API KEY IN YOUR PRODUCTION APPS
 //	This is a test account of mine, so i've left this in for demo purposes.
 //	Secure your nodejs server and API key when building real things!
-let API_KEY = "d02MG5N6GCJ0Y6GN5OHYCIW7XBHCbuu0O0w6sxtZmHMuhn-tgvOK1NaFIgST-4r8E3CQp6APMNMjKs0sZV3UHtQO-e32ysCBY-3nGqxJGsvjTCZ_eEM5jE14H-XuYHYx";
+//let API_KEY = "d02MG5N6GCJ0Y6GN5OHYCIW7XBHCbuu0O0w6sxtZmHMuhn-tgvOK1NaFIgST-4r8E3CQp6APMNMjKs0sZV3UHtQO-e32ysCBY-3nGqxJGsvjTCZ_eEM5jE14H-XuYHYx";
 
 //	REST API for Yelp
 let yelpAPI = axios.create({
-	baseURL: "https://api.yelp.com/v3/",
-	headers: {
-		Authorization: `Bearer ${API_KEY}`,
-		"Content-type": "application/json",
-	}
+	baseURL: "http://localhost:8080/"
+	// ,
+	// headers: {
+	// 	Authorization: `Bearer ${API_KEY}`,
+	// 	"Content-type": "application/json",
+	// }
 });
 
 app.get('/get-record', function(req, res) {
@@ -39,7 +40,7 @@ app.get('/get-record', function(req, res) {
 app.get('/get-reviews', function(req, res) {
 
 	const { id } = req.query;
-	console.log(id);
+	//console.log(id);
 	yelpAPI(`/businesses/${ id }/reviews`).then(({ data }) => {
 
 		res.send(JSON.stringify(data));
@@ -57,17 +58,16 @@ app.get('/get-categories', function(req, res) {
 app.get('/get-records', function(req, res) {
 
 	const { latitude, longitude, radius } = req.query;
-	const categories = "restaurant,takeaway";
+	//const categories = "restaurant,takeaway";
 
 	const params = {
 
 		latitude,
 		longitude,
-		radius,
-		categories
+		radius
 	};
 
-	yelpAPI("/businesses/search", { params: params }).then(({ data }) => {
+	yelpAPI("/storagepoint/getall", { params: params }).then(({ data }) => {
 
 		const allRecords = parseDetails(data);
 		res.send(JSON.stringify({ allRecords, center: data.region.center }));
@@ -77,10 +77,11 @@ app.get('/get-records', function(req, res) {
 const parseDetails = info => {
 
 	console.log("Parsing details...");
+	//console.log(info);
 	var records = [];
 
 	var parsedInfo = info;
-	var businesses = parsedInfo.businesses;
+	var businesses = parsedInfo.list;
 	var total = parsedInfo.total;
 
 	var distance = 0;
@@ -89,7 +90,7 @@ const parseDetails = info => {
 	for (var i = 0; i < businesses.length; i++) {
 
 		var id = businesses[i].id;
-		var url = businesses[i].url;
+		//var url = businesses[i].url;
 		var imageURL = businesses[i].image_url;
 		var name = businesses[i].name;
 		var alias = businesses[i].alias;
@@ -104,34 +105,34 @@ const parseDetails = info => {
 		var latitude = coordinates.latitude;
 		var longitude = coordinates.longitude;
 
-		var displayAddress = "";
+		var displayAddress = businesses[i].location.display_address;
 
-		if (businesses[i].location) {
+		// if (businesses[i].location) {
 
-			var addressDetails = businesses[i].location;
+		// 	var addressDetails = businesses[i].location;
 
-			if (addressDetails.display_address) {
+		// 	if (addressDetails.display_address) {
 				
-				var displayAddressArr = addressDetails.display_address;
+		// 		var displayAddressArr = addressDetails.display_address;
 
-				if (Array.isArray(displayAddressArr)) {
+		// 		if (Array.isArray(displayAddressArr)) {
 					
-					for (var j = 0; j < displayAddressArr.length; j++) {
+		// 			for (var j = 0; j < displayAddressArr.length; j++) {
 
-						var displayAddressPart = displayAddressArr[j];
-						displayAddress = displayAddress + displayAddressPart;
+		// 				var displayAddressPart = displayAddressArr[j];
+		// 				displayAddress = displayAddress + displayAddressPart;
 
-						if (j != displayAddressArr.length-1) {
+		// 				if (j != displayAddressArr.length-1) {
 
-							displayAddress = displayAddress + ", ";
-						}
-					}
-				} else {
+		// 					displayAddress = displayAddress + ", ";
+		// 				}
+		// 			}
+		// 		} else {
 
-					displayAddress = displayAddressArr;
-				}
-			}
-		}
+		// 			displayAddress = displayAddressArr;
+		// 		}
+		// 	}
+		// }
 
 		if (businesses[i].distance) {
 
@@ -145,7 +146,6 @@ const parseDetails = info => {
 				
 				id,
 				alias,
-				url,
 				imageURL,
 				name,
 				phone,

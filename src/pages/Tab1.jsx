@@ -40,7 +40,7 @@ const Tab1 = () => {
 		getRecords(currentPoint);
 	});
 
-	const [ currentPoint, setCurrentPoint ] = useState({ latitude: 40.8264691, longitude: -73.9549618 });
+	const [ currentPoint, setCurrentPoint ] = useState({ latitude: 12.843661, longitude: 77.663000 });
 
 	const [ showCurrentPointInfo, setShowCurrentPointInfo ] = useState(false);
 
