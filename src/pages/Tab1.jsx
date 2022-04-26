@@ -21,9 +21,7 @@ const maptilerProvider = maptiler('d5JQJPLLuap8TkJJlTdJ', 'streets');
 const Tab1 = () => {
 
 	const web = isPlatform("web" || "pwa" || "mobileweb" || "");
-
-	//UNCOMMENT THESE(25-38) TO USE CURRENT LOCATION.
-
+	//UNCOMMENT THESE(25-36) TO USE CURRENT LOCATION.
 	// const [ currentPoint, setCurrentPoint ] = useState(false);
 
 	// useEffect(() => {

@@ -39,7 +39,7 @@ app.get('/get-record', function(req, res) {
 app.get('/get-reviews', function(req, res) {
 
 	const { id } = req.query;
-
+	console.log(id);
 	yelpAPI(`/businesses/${ id }/reviews`).then(({ data }) => {
 
 		res.send(JSON.stringify(data));
