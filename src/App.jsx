@@ -40,8 +40,14 @@ return (
   <IonApp>
     <AuthContext.Provider value={auth}>
       <IonReactRouter>
+        {/* <Route exact path="/login">
+          <LoginPage />
+        </Route> */}
       <IonTabs>
         <IonRouterOutlet> 
+        <Route exact path="/login">
+          <LoginPage />
+        </Route>
           <Route exact path="/map">
             <Tab1 />
           </Route>
@@ -55,7 +61,7 @@ return (
             <Dashboard />
           </Route>
           <Route exact path="/">
-            <Redirect to="/map" />
+            <Redirect to="/login" />
           </Route>
         </IonRouterOutlet>
         <IonTabBar slot="bottom">

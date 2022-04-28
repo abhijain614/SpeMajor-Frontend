@@ -61,7 +61,7 @@ import { IonReactRouter } from '@ionic/react-router';
       role: "ADMIN"
     };
   
-    const response = await axios.post(base + "/admin/login", loginData);
+    const response = await axios.post(base + "/vendor/login", loginData);
     //   console.log(response);
   
     return response.data;
@@ -142,9 +142,9 @@ import { IonReactRouter } from '@ionic/react-router';
       window.location.assign("/");
     }
   
-    // if (loggedIn) { 
-    //   return <Redirect to="./dashboard" />;
-    // }
+    if (loggedIn) { 
+      return <Redirect to="./dashboard" />;
+    }
     //console.log("error:", loggedIn);
   
     return (

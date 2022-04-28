@@ -6,15 +6,16 @@ export const getRecords = async (currentPoint) => {
 	//	Allow choosing of radius?
 	//	Offset could = amount loaded in an infinite scroll?
 	var latitude = currentPoint.latitude, longitude = currentPoint.longitude, radius = 1000, offset = 0;
-	const response = await fetch(`http://172.16.129.244:4000/get-records?latitude=${ latitude }&longitude=${ longitude }&radius=${ radius }&offset=${ offset }`);
+	const response = await fetch(`http://172.16.129.244:4000/get-records?latitude=${ latitude }&longitude=${ longitude }&radius=${ radius }`);
 	const data = await response.json();
 	console.log(data);
 	setStore(data);
 }  
 
-export const getVendorRecords = async (userId) => {
+export const getVendorRecords = async (jwt) => {
+	console.log("Debugging: ",jwt);
 	//var latitude = currentPoint.latitude, longitude = currentPoint.longitude, radius = 1000, offset = 0;
-	const response = await fetch(`http://172.16.129.244:4000/get-vendor-records?userId=${ userId }`);
+	const response = await fetch(`http://172.16.129.244:4000/get-vendor-records?authCode=${ jwt }`);
 	const data = await response.json();
 	console.log(data);
 	vendorSetStore(data);

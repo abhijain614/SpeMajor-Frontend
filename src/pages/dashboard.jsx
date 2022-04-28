@@ -3,14 +3,23 @@ import { arrowForward,listOutline,personOutline, navigateOutline } from 'ionicon
 import { RatingStar } from '../components/RatingStar';
 import VendorRecordsStore, { vendorSetStore } from '../store/VendorRecordsStore';
 import { fetchRecords } from '../store/Selectors';
-
+import { get } from '../services/IonicStorage';
 import styles from "../styles/ViewAll.module.scss";
 import { getVendorRecords } from '../main/yelp';
+import { useAuth } from '../stores/auth';
 //import { setStore } from '../store/RecordsStore';
 
 const Dashboard = () => {
 
+
+	let {userJWT} = useAuth();
+	console.log("This is JWT ",userJWT);
 	const records = VendorRecordsStore.useState(fetchRecords);
+
+	useIonViewWillEnter(async () => {
+		//Yahan pe userId leke aana hai
+		getVendorRecords(userJWT);
+	});
 
 	return (
 		<IonPage>

@@ -16,7 +16,7 @@ app.listen(process.env.PORT || 4000, function() {
 //	This is a test account of mine, so i've left this in for demo purposes.
 //	Secure your nodejs server and API key when building real things!
 //let API_KEY = "d02MG5N6GCJ0Y6GN5OHYCIW7XBHCbuu0O0w6sxtZmHMuhn-tgvOK1NaFIgST-4r8E3CQp6APMNMjKs0sZV3UHtQO-e32ysCBY-3nGqxJGsvjTCZ_eEM5jE14H-XuYHYx";
-
+//let API_KEY = await this.storage.get('user');
 //	REST API for Yelp
 let yelpAPI = axios.create({
 	baseURL: "http://172.16.129.244:8080/"
@@ -26,6 +26,7 @@ let yelpAPI = axios.create({
 	// 	"Content-type": "application/json",
 	// }
 });
+
 
 app.get('/get-record', function(req, res) {
 
@@ -39,7 +40,6 @@ app.get('/get-record', function(req, res) {
 
 
 app.get('/get-reviews', function(req, res) {
-
 	const { id } = req.query;
 	//console.log(id);
 	yelpAPI(`/storagepoint/${ id }/reviews`).then(({ data }) => {
@@ -78,28 +78,96 @@ app.get('/get-records', function(req, res) {
 
 app.get('/get-vendor-records', function(req, res) {
 
-	const { userId } = req.query;
+	// const { userId } = req.query;
 	//const categories = "restaurant,takeaway";
 	//if(latitude==)
 	// console.log(latitude);
 	// console.log(longitude);
-	const params = {
-		userId
-	};
+	// const params = {
+	// 	userId
+	// };
+	const {authCode} = req.query;
+	let yelpAPI2 = axios.create({
+		baseURL: "http://172.16.129.244:8080/"
+		,
+		headers: {
+			Authorization: authCode,
+			"Content-type": "application/json",
+		}
+	});
 
-	yelpAPI("/vendor/getall", { params: params }).then(({ data }) => {
-		
-		const allRecords = parseDetails(data);
+	yelpAPI2("/vendor/id/getall").then(( {data} ) => {
+		//console.log(data);
+		const allRecords = parseDetails2(data);
 		res.send(JSON.stringify({allRecords}));
 	});
 });
+
+const parseDetails2 = info => {
+
+	console.log("Parsing details...");
+	//console.log(info);
+	var records = [];
+	var businesses = info;
+	//var total = parsedInfo.total;
+
+	var distance = 0;
+	var distanceMiles = 0;
+
+	for (var i = 0; i < businesses.length; i++) {
+
+		var id = businesses[i].id;
+		//var url = businesses[i].url;
+		var imageURL = businesses[i].image_url;
+		var name = businesses[i].name;
+		var alias = businesses[i].alias;
+		var phone = businesses[i].display_phone;
+		var price = businesses[i].price;
+		var rating = businesses[i].rating;	
+
+		var isClosed = businesses[i].is_closed;
+		var isOpen = (isClosed == true) ? false : true;
+
+		var coordinates = businesses[i].coordinates;
+		var latitude = coordinates.latitude;
+		var longitude = coordinates.longitude;
+
+		var displayAddress = businesses[i].location.display_address;
+
+		if (businesses[i].distance) {
+
+			var distance = businesses[i].distance;
+			var distanceMiles = (distance * 0.000621371192).toFixed(2);
+		}
+
+		if (isClosed != true) {
+			
+			records.push({
+				
+				id,
+				alias,
+				imageURL,
+				name,
+				phone,
+				price,
+				rating, 
+				latitude, 
+				longitude, 
+				displayAddress, 
+				isOpen, 
+				distance: distanceMiles
+			});
+		}
+	}
+
+	return records;
+}
 
 const parseDetails = info => {
 
 	console.log("Parsing details...");
 	//console.log(info);
 	var records = [];
-
 	var parsedInfo = info;
 	var businesses = parsedInfo.list;
 	var total = parsedInfo.total;
