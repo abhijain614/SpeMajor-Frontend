@@ -143,6 +143,7 @@ import { IonReactRouter } from '@ionic/react-router';
     }
   
     if (loggedIn) { 
+      console.log("Hello");
       return <Redirect to="./dashboard" />;
     }
     //console.log("error:", loggedIn);
@@ -210,7 +211,8 @@ import { IonReactRouter } from '@ionic/react-router';
               fill="solid"
               shape="round"
               onClick={handleLogin}
-            >
+              // routerLink="/dashboard"
+              >
               Login
             </IonButton>
           </IonList>
