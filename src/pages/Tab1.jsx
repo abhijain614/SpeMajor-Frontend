@@ -31,12 +31,10 @@ const Tab1 = () => {
 	// 		const fetchedLocation = await getLocation();
 	// 		setCurrentPoint(fetchedLocation.currentLocation);
 	// 	}
-
 	// 	getCurrentLocation();
 	// }, []);
 
 	useIonViewWillEnter(() => {
-
 		getRecords(currentPoint);
 	});
 

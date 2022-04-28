@@ -6,17 +6,17 @@ export const getLocation = async () => {
 
 	const permission = await Geolocation.checkPermissions();
 	var coordinates;
-
+	
 	if (permission.location === "granted") {
-
-		var options = {
 		
+		var options = {
 			enableHighAccuracy: true,
 			timeout: 10000,
 			maximumAge: Infinity
 		};
 		
 		coordinates = await Geolocation.getCurrentPosition(options);
+		console.log('Current position:', coordinates);
 	} else {
 
 		if (platform === "web") {
@@ -26,6 +26,7 @@ export const getLocation = async () => {
 
 			await Geolocation.requestPermissions();
 			coordinates = await Geolocation.getCurrentPosition(options);
+			console.log('(Here)Current position:', coordinates);
 		}
 	}
 

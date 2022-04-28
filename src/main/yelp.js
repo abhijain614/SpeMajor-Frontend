@@ -1,8 +1,7 @@
 import { setStore } from "../store/RecordsStore";
+import { vendorSetStore } from "../store/VendorRecordsStore";
 
 export const getRecords = async (currentPoint) => {
-
-
 	//	Replace lat/long with values from get current location.
 	//	Allow choosing of radius?
 	//	Offset could = amount loaded in an infinite scroll?
@@ -12,6 +11,14 @@ export const getRecords = async (currentPoint) => {
 	console.log(data);
 	setStore(data);
 }  
+
+export const getVendorRecords = async (userId) => {
+	//var latitude = currentPoint.latitude, longitude = currentPoint.longitude, radius = 1000, offset = 0;
+	const response = await fetch(`http://172.16.129.244:4000/get-vendor-records?userId=${ userId }`);
+	const data = await response.json();
+	console.log(data);
+	vendorSetStore(data);
+} 
 
 export const getRecord = async recordId => {
 

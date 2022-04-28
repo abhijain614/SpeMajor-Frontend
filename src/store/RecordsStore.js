@@ -5,8 +5,8 @@ const RecordsStore = new Store({
 	records: [],
 	center : []
 });
-
 export default RecordsStore;
+
 
 export const setStore = records => {
 

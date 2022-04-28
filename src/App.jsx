@@ -1,12 +1,13 @@
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonIcon, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
+import { IonApp, IonIcon,IonLoading, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { listOutline, mapOutline } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
-
+import { AuthContext, useAuthInit } from "./stores/auth";
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
+
 
 /* Basic CSS for apps built with Ionic */
 import '@ionic/react/css/normalize.css';
@@ -24,15 +25,23 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import ViewPlace from './pages/ViewPlace';
+import LoginPage from './pages/login_page';
+import Dashboard from './pages/dashboard';
 
 setupIonicReact({});
 
-const App = () => (
+const App = () => {
+  const { loading, auth } = useAuthInit();
+  if (loading) {
+    return <IonLoading isOpen />;
+  }
+
+return (
   <IonApp>
-    <IonReactRouter>
+    <AuthContext.Provider value={auth}>
+      <IonReactRouter>
       <IonTabs>
-        <IonRouterOutlet>
-          
+        <IonRouterOutlet> 
           <Route exact path="/map">
             <Tab1 />
           </Route>
@@ -41,6 +50,9 @@ const App = () => (
           </Route>
           <Route exact path="/list/:id">
             <ViewPlace />
+          </Route>
+          <Route exact path="/dashboard">
+            <Dashboard />
           </Route>
           <Route exact path="/">
             <Redirect to="/map" />
@@ -54,9 +66,13 @@ const App = () => (
             <IonIcon icon={ listOutline } />
           </IonTabButton>
         </IonTabBar>
-      </IonTabs>
+        </IonTabs>
     </IonReactRouter>
+    
+
+   
+    </AuthContext.Provider>
   </IonApp>
 );
-
+}
 export default App;

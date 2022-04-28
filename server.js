@@ -19,7 +19,7 @@ app.listen(process.env.PORT || 4000, function() {
 
 //	REST API for Yelp
 let yelpAPI = axios.create({
-	baseURL: "http://localhost:8080/"
+	baseURL: "http://172.16.129.244:8080/"
 	// ,
 	// headers: {
 	// 	Authorization: `Bearer ${API_KEY}`,
@@ -36,6 +36,7 @@ app.get('/get-record', function(req, res) {
 		res.send(JSON.stringify(data));
 	});
 });
+
 
 app.get('/get-reviews', function(req, res) {
 
@@ -59,9 +60,10 @@ app.get('/get-records', function(req, res) {
 
 	const { latitude, longitude, radius } = req.query;
 	//const categories = "restaurant,takeaway";
-
+	//if(latitude==)
+	// console.log(latitude);
+	// console.log(longitude);
 	const params = {
-
 		latitude,
 		longitude,
 		radius
@@ -71,6 +73,24 @@ app.get('/get-records', function(req, res) {
 		
 		const allRecords = parseDetails(data);
 		res.send(JSON.stringify({ allRecords, center: data.region.center }));
+	});
+});
+
+app.get('/get-vendor-records', function(req, res) {
+
+	const { userId } = req.query;
+	//const categories = "restaurant,takeaway";
+	//if(latitude==)
+	// console.log(latitude);
+	// console.log(longitude);
+	const params = {
+		userId
+	};
+
+	yelpAPI("/vendor/getall", { params: params }).then(({ data }) => {
+		
+		const allRecords = parseDetails(data);
+		res.send(JSON.stringify({allRecords}));
 	});
 });
 
