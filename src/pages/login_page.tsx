@@ -21,7 +21,7 @@ import Dashboard from './dashboard';
 import ViewPlace from './ViewPlace';
   import React, { useState } from "react";
   import axios from "axios";
-  import { IonGrid, IonRow, IonCol } from "@ionic/react";
+  import { IonGrid, IonRow, IonCol, IonCardContent,IonCardTitle } from "@ionic/react";
   import { personCircle, mapOutline, listOutline } from "ionicons/icons";
   import { useHistory } from "react-router-dom";
  // import { Redirect } from "react-router";
@@ -151,7 +151,7 @@ import { IonReactRouter } from '@ionic/react-router';
     return (
       <IonPage>
         <IonHeader className="IonHeader">
-          <IonToolbar></IonToolbar>
+          <IonToolbar class='ion-text-center'><strong> Neighbor's Storage </strong></IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
           <IonAlert
@@ -177,14 +177,15 @@ import { IonReactRouter } from '@ionic/react-router';
                 <IonRow>
                   <IonCol size="12" className="ion-text-center">
                     <IonText className="ion-text-head" color="primary">
-                      <strong>{t("login")}</strong>
+                      <strong>{t("Manage Your Storage Points")}</strong>
                     </IonText>
                   </IonCol>
                 </IonRow>
+                
               </IonGrid>
             </IonItem>
             <IonItem>
-              <IonText className="ion-text-subhead">{t("userid")}</IonText>
+              <IonText className="ion-text-subhead">{t("Email")}</IonText>
             </IonItem>
             <IonCard className="ion-card">
               <IonInput
@@ -193,7 +194,7 @@ import { IonReactRouter } from '@ionic/react-router';
               ></IonInput>
             </IonCard>
             <IonItem>
-              <IonText className="ion-text-subhead">{t("password")}</IonText>
+              <IonText className="ion-text-subhead">{t("Password")}</IonText>
             </IonItem>
             <IonCard className="ion-card">
               <IonInput
@@ -215,7 +216,9 @@ import { IonReactRouter } from '@ionic/react-router';
               >
               Login
             </IonButton>
+            
           </IonList>
+          
           <IonLoading isOpen={loading} />
         </IonContent>
       </IonPage>

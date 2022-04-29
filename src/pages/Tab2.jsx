@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardHeader, IonCardSubtitle, IonContent, IonHeader, IonIcon, IonNote, IonPage, IonRow, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCard,IonButtons,IonBackButton, IonCardHeader, IonCardSubtitle, IonContent, IonHeader, IonIcon, IonNote, IonPage, IonRow, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import { arrowForward, navigateOutline } from 'ionicons/icons';
 import { RatingStar } from '../components/RatingStar';
 import RecordsStore from '../store/RecordsStore';
@@ -14,8 +14,11 @@ const Tab2 = () => {
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
-					<IonTitle>All places in your location</IonTitle>
+				<IonButtons slot="start">
+				<IonBackButton text="Explore Nearby Storage Points"/>
+				</IonButtons>
 				</IonToolbar>
+				
 			</IonHeader>
 			<IonContent fullscreen>
 				<IonHeader collapse="condense">

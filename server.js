@@ -20,11 +20,6 @@ app.listen(process.env.PORT || 4000, function() {
 //	REST API for Yelp
 let yelpAPI = axios.create({
 	baseURL: "http://172.16.129.244:8080/"
-	// ,
-	// headers: {
-	// 	Authorization: `Bearer ${API_KEY}`,
-	// 	"Content-type": "application/json",
-	// }
 });
 
 
