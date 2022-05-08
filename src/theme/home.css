@@ -1,0 +1,84 @@
+.in-toolbar {
+    --padding-top: 4%;
+    --padding-end: 4%;
+    --padding-start: 4%;
+    font-size: 28px;
+  }
+  
+  .button-small {
+    --padding-start: 10% !important;
+    --padding-end: 10% !important;
+    --padding-top: 2% !important;
+    --padding-bottom: 2% !important;
+    margin-bottom: 0% !important;
+    margin-top: 0% !important;
+  
+    font-size: 12px;
+    width: 95px;
+  }
+  
+  .button-submit {
+    margin: 4%;
+  }
+  
+  .IonHeader::after {
+    background: none;
+  }
+  
+  .ion-text-title {
+    font-size: 30px;
+    font-weight: 600;
+  }
+  .item {
+    --border-style: none;
+    --padding-start: 4%;
+    --padding-end: 4%;
+  }
+  
+  .box {
+    width: 145px;
+  }
+  .col-no-top {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  .grid-no-top {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+  
+  .col-left {
+    padding-left: 4%;
+  }
+  .col-right {
+    padding-right: 4%;
+  }
+  
+  .col-no-left {
+    padding-left: 0%;
+  }
+  .col-no-right {
+    padding-right: 0%;
+  }
+  
+  /* ion-content {
+    --background: #f2f2f7;
+  }
+  
+  ion-datetime {
+    height: auto;
+    width: auto;
+  
+    max-width: 350px;
+  }
+  
+  ion-modal {
+    --width: 290px;
+    --height: 382px;
+    --border-radius: 8px;
+  }
+  
+  ion-modal ion-datetime {
+    height: 382px;
+  } */
+  

@@ -1,6 +1,5 @@
 import { Toast } from "@capacitor/toast";
 import axios from "axios";
-//import { Followup } from "../models/followup";
 
 const base = "http://172.16.129.244:8080";
 const showToast = async (msg: string) => {

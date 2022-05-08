@@ -8,7 +8,7 @@ import {
     IonLoading,
     IonPage,
     IonText,
-    IonTitle,
+    IonFooter,
     IonToolbar,
     IonTabBar,
     IonTabButton,
@@ -38,13 +38,13 @@ import ViewPlace from './ViewPlace';
   import { useAuth } from "../stores/auth";
   import { createStore, set } from "../services/IonicStorage";
   //import { logInRequest } from "../services/network_service";
-  import { useTranslation } from "react-i18next";
   //import OneSignal from "onesignal-cordova-plugin";
   import { Toast } from "@capacitor/toast";
 import { setStore } from "../store/RecordsStore";
 import VendorRecordsStore, { vendorSetStore } from '../store/VendorRecordsStore';
 import { getVendorRecords } from '../main/yelp';
 import { IonReactRouter } from '@ionic/react-router';  
+import {Action} from '../components/Action'
 
 
   const base = "http://172.16.129.244:8080";
@@ -68,7 +68,7 @@ import { IonReactRouter } from '@ionic/react-router';
   };
 
   const LoginPage: React.FC = () => {
-    const { t } = useTranslation();
+    // const { t } = useTranslation();
   
     const history = useHistory();
     const [iserror, setIserror] = useState<boolean>(false);
@@ -81,20 +81,20 @@ import { IonReactRouter } from '@ionic/react-router';
   
     const handleLogin = () => {
       if (!userId || userId.toString().trim().length === 0) {
-        setMessage(t("valid_userid_msg"));
+        setMessage("Email can't be empty!");
         setIserror(true);
         return;
       }
   
       if (!password || password.toString().trim().length === 0) {
-        setMessage(t("valid_pass_msg"));
+        setMessage("Password can't be empty!");
         setIserror(true);
         return;
       }
       setLoading(true);
   
       if (Network.type == Network.Connection.NONE) {
-        setMessage(t("offline_msg"));
+        setMessage("You are offline!");
         setIserror(true);
         setLoading(false);
       } else {
@@ -116,13 +116,13 @@ import { IonReactRouter } from '@ionic/react-router';
             if (error.response) {
               console.log(error.response.status);
               if (error.response.status == 403)
-                setMessage(t("username_password_incorrect_msg"));
+                setMessage("username_password_incorrect_msg");
               else setMessage(error.response.status + error.message);
             } else if (error.request) {
               console.log(error.request);
               setMessage(error.toString());
             } else {
-              console.log(t("error"), error.message);
+              console.log("error", error.message);
               setMessage(error.message + "-");
             }
             // console.log("error:", error);
@@ -158,9 +158,9 @@ import { IonReactRouter } from '@ionic/react-router';
             isOpen={iserror}
             onDidDismiss={() => setIserror(false)}
             cssClass="my-custom-class"
-            header={t("error!")}
+            header={"error!"}
             message={message}
-            buttons={[t("dismiss")]}
+            buttons={["dismiss"]}
           />
           <IonList>
             <IonItem>
@@ -177,7 +177,7 @@ import { IonReactRouter } from '@ionic/react-router';
                 <IonRow>
                   <IonCol size="12" className="ion-text-center">
                     <IonText className="ion-text-head" color="primary">
-                      <strong>{t("Manage Your Storage Points")}</strong>
+                      <strong>{"Manage Your Storage Points"}</strong>
                     </IonText>
                   </IonCol>
                 </IonRow>
@@ -185,7 +185,7 @@ import { IonReactRouter } from '@ionic/react-router';
               </IonGrid>
             </IonItem>
             <IonItem>
-              <IonText className="ion-text-subhead">{t("Email")}</IonText>
+              <IonText className="ion-text-subhead">{"Email"}</IonText>
             </IonItem>
             <IonCard className="ion-card">
               <IonInput
@@ -194,7 +194,7 @@ import { IonReactRouter } from '@ionic/react-router';
               ></IonInput>
             </IonCard>
             <IonItem>
-              <IonText className="ion-text-subhead">{t("Password")}</IonText>
+              <IonText className="ion-text-subhead">{"Password"}</IonText>
             </IonItem>
             <IonCard className="ion-card">
               <IonInput
@@ -221,11 +221,14 @@ import { IonReactRouter } from '@ionic/react-router';
           
           <IonLoading isOpen={loading} />
         </IonContent>
+        <IonFooter>
+				<IonGrid className="ion-no-margin ion-no-padding">
+                    <Action message="Don't have an account?" text="Signup" link="/signup" />
+				</IonGrid>
+			</IonFooter>
       </IonPage>
     );
   };
-  
-  
   
 
   export default LoginPage;

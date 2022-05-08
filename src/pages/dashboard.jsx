@@ -1,5 +1,5 @@
-import { IonButton, IonTabBar,IonTabButton,IonCard,IonFab,IonFabButton, IonCardHeader, IonCardSubtitle, IonContent, IonHeader, IonIcon, IonNote, IonPage, IonRow, IonText, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
-import { arrowForward,listOutline,personOutline, navigateOutline,arrowBackCircle,logOut,powerOutline } from 'ionicons/icons';
+import { IonButton, IonTabBar,IonTabButton,IonFabList,IonCard,IonFab,IonFabButton, IonCardHeader, IonCardSubtitle, IonContent, IonHeader, IonIcon, IonNote, IonPage, IonRow, IonText, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
+import { arrowForward,listOutline,personOutline, navigateOutline,arrowBackCircle,logOut,powerOutline, arrowUpCircle } from 'ionicons/icons';
 import { RatingStar } from '../components/RatingStar';
 import VendorRecordsStore, { vendorSetStore } from '../store/VendorRecordsStore';
 import { fetchRecords } from '../store/Selectors';
@@ -10,6 +10,7 @@ import { useAuth } from '../stores/auth';
 //import { setStore } from '../store/RecordsStore';
 import { createStore, get,set } from '../services/IonicStorage';
 import { useState } from 'react';
+import { add } from 'ionicons/icons';
 const Dashboard = () => {
 
 	const [logO, setLogO] = useState(false);
@@ -55,7 +56,7 @@ const Dashboard = () => {
 					const rating = Math.floor(record.rating).toFixed(0);
 
 					return (
-						<IonCard key={ `record_${ index }` } className={ `${ styles.viewCard } animate__animated animate__faster animate__fadeIn` } routerLink={ `/list/${ record.id }` }>
+						<IonCard key={ `record_${ index }` } className={ `${ styles.viewCard } animate__animated animate__faster animate__fadeIn` } routerLink={ `/dashboard/editSP/${ record.id }` }>
 							<div className={ styles.cardImage } style={{ backgroundImage: `url(${ imageURL })` }} />
 							<IonCardHeader>
 
@@ -82,11 +83,30 @@ const Dashboard = () => {
 						</IonCard>
 					);
 				})}
-				<IonFab vertical="top" horizontal="end" edge slot="fixed">
+				{/* <IonFab vertical="top" horizontal="end" edge slot="fixed">
           	<IonFabButton onClick={handleLogout} >  
             <IonIcon icon={powerOutline} />	
           	</IonFabButton>
-       		 </IonFab>
+       		 </IonFab> */}
+				{/* <IonFab vertical="bottom" horizontal="start" slot="fixed" routerLink={`/addSP`}>
+							<IonFabButton>
+								<IonIcon icon={add} />
+							</IonFabButton>
+						</IonFab>
+				<IonFab vertical="bottom" horizontal="end" slot="fixed">
+							<IonFabButton>
+								<IonIcon icon={powerOutline} />
+							</IonFabButton>
+						</IonFab> */}
+				 <IonFab vertical="bottom" horizontal="end" slot="fixed">
+				 <IonFabButton>
+						<IonIcon icon={arrowUpCircle} />
+					</IonFabButton>
+					<IonFabList side="top">
+            <IonFabButton><IonIcon icon={add} /></IonFabButton>
+			<IonFabButton><IonIcon icon={powerOutline} /></IonFabButton>
+          			</IonFabList>
+				 </IonFab>
 			</IonContent>
 			
 			{/* <IonTabBar slot="bottom">

@@ -14,7 +14,7 @@ import { maptiler } from 'pigeon-maps/providers';
 import { useRef } from "react";
 const maptilerProvider = maptiler('d5JQJPLLuap8TkJJlTdJ', 'streets');
 
-const ViewPlace = ({}) => {
+const ViewPlace = ({}) => {		
 
 	const pageRef = useRef();
 	const [ present, dismiss ] = useIonLoading();
@@ -54,7 +54,7 @@ const ViewPlace = ({}) => {
 		present("Fetching extended details...");
 		getData();
 	});
-	
+	//console.log(record.imageURL);
 	const imageURL = record.imageURL ? record.imageURL : "/placeholder.jpeg";
 	const rating = Math.floor(record.rating).toFixed(0);
 

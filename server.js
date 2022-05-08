@@ -51,7 +51,7 @@ app.get('/get-reviews', function(req, res) {
 // 	});
 // });
 
-app.get('/get-records', function(req, res) {
+app.get('/get-records', function(req, res) {	
 
 	const { latitude, longitude, radius } = req.query;
 	//const categories = "restaurant,takeaway";

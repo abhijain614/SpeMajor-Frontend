@@ -27,6 +27,8 @@ import './theme/variables.css';
 import ViewPlace from './pages/ViewPlace';
 import LoginPage from './pages/login_page';
 import Dashboard from './pages/dashboard';
+import EditPlace from './pages/EditPlace';
+import SignupPage from './pages/signup_page';
 
 setupIonicReact({});
 
@@ -48,6 +50,9 @@ return (
         <Route exact path="/login">
           <LoginPage />
         </Route>
+        <Route exact path="/signup">
+          <SignupPage />
+        </Route>
           <Route exact path="/map">
             <Tab1 />
           </Route>
@@ -59,6 +64,9 @@ return (
           </Route>
           <Route exact path="/dashboard">
             <Dashboard />
+          </Route>
+          <Route exact path="/dashboard/editSP/:id">
+            <EditPlace />
           </Route>
           <Route exact path="/">
             <Redirect to="/login" />
