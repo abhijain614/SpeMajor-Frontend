@@ -19,6 +19,7 @@ const ViewPlace = ({}) => {
 	const pageRef = useRef();
 	const [ present, dismiss ] = useIonLoading();
 	const { id } = useParams();
+	console.log(id);
 	const record = RecordsStore.useState(fetchRecord(id));
 	const [ extendedRecord, setExtendedRecord ] = useState(false);
 

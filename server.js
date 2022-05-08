@@ -91,7 +91,7 @@ app.get('/get-vendor-records', function(req, res) {
 		}
 	});
 
-	yelpAPI2("/vendor/id/getall").then(( {data} ) => {
+	yelpAPI2("/vendor/getall").then(( {data} ) => {
 		//console.log(data);
 		const allRecords = parseDetails2(data);
 		res.send(JSON.stringify({allRecords}));
@@ -104,14 +104,15 @@ const parseDetails2 = info => {
 	//console.log(info);
 	var records = [];
 	var businesses = info;
-	//var total = parsedInfo.total;
+	//var total = parsedInfo.total;	
 
 	var distance = 0;
 	var distanceMiles = 0;
 
 	for (var i = 0; i < businesses.length; i++) {
 
-		var id = businesses[i].id;
+		var id = businesses[i].storagepoint_id;
+		//console.log(id);
 		//var url = businesses[i].url;
 		var imageURL = businesses[i].image_url;
 		var name = businesses[i].name;
@@ -172,7 +173,7 @@ const parseDetails = info => {
 
 	for (var i = 0; i < businesses.length; i++) {
 
-		var id = businesses[i].id;
+		var id = businesses[i].storagepoint_id;
 		//var url = businesses[i].url;
 		var imageURL = businesses[i].image_url;
 		var name = businesses[i].name;
@@ -226,7 +227,6 @@ const parseDetails = info => {
 		if (isClosed != true) {
 			
 			records.push({
-				
 				id,
 				alias,
 				imageURL,

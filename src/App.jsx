@@ -65,7 +65,7 @@ return (
           <Route exact path="/dashboard">
             <Dashboard />
           </Route>
-          <Route exact path="/dashboard/editSP/:id">
+          <Route exact path="/dashboard/:id">
             <EditPlace />
           </Route>
           <Route exact path="/">

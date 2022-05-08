@@ -29,18 +29,28 @@ import { update } from "pullstate";
   import "../theme/home.css"
   import axios from "axios";
 
+
+  
   const base = "http://172.16.129.244:8080";
-  //this id is currently static, for Hitesh Medicals, bring it from other screen!
   //Also, the placeholders for the text fields are currently static, bring it from the local store/API call.
-  const updatePlaceRequest = async (spId: string,enteredName: string, enteredPhone: string,enteredPrice: string) => {
-    const updateData = {
-        id: spId,
+  const updatePlaceRequest = async (userJWT: any,spId:number,enteredName: string, enteredPhone: string,enteredPrice: string) => {
+    console.log(spId);
+    const updateData = {  
+      storagepoint_id: spId,
       name: enteredName,
       phone: enteredPhone,
       price: enteredPrice
     };
-  
-    const response = await axios.put(base + "/vendor/update_storage_point", updateData);
+    let axiosConfig = {
+      headers: {
+          Authorization: userJWT,
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": "*",
+      }
+    };
+    const response = await axios.put(base + "/vendor/update_storage_point",
+     updateData,axiosConfig
+     );
     //   console.log(response);
     if(response.data==="success"){
         console.log("updated succesfully");
@@ -49,7 +59,16 @@ import { update } from "pullstate";
   };
 
 const EditPlace: React.FC = () =>{ 
-    const  spId:any  = useParams();
+    const {userJWT} = useAuth();
+    console.log("This is:");
+    console.log(userJWT); 
+    const spId   = useParams();
+    const id = JSON.parse(JSON.stringify(spId));
+    // console.log(Object.keys(id));
+    // console.log(id);
+    // console.log(id.id);
+    //console.log(object);
+    //console.log(spId);
     const history = useHistory();
     const [error, setError] = useState("");
     const [iserror, setIserror] = useState<boolean>(false);
@@ -75,7 +94,7 @@ const EditPlace: React.FC = () =>{
             return;
         }
         setError("");
-        updatePlaceRequest(spId,enteredName as string,enteredPhone as string,enteredPrice as string).then(()=>{
+        updatePlaceRequest(userJWT,id.id,enteredName as string,enteredPhone as string,enteredPrice as string).then(()=>{
             console.log("Reaching this line should mean... successfully updated data!");
         }).catch((error)=>{
                 console.log(error.response.status);
@@ -112,6 +131,7 @@ const EditPlace: React.FC = () =>{
                     <IonInput
                       value="Sample Name"
                       inputmode="text"
+                      ref = {nameRef}
                     ></IonInput>
                   </IonCard>
                 </IonCol>
@@ -122,6 +142,7 @@ const EditPlace: React.FC = () =>{
                     <IonInput
                       value="Sample Phone"
                       inputmode="text"
+                      ref = {phoneRef}
                     ></IonInput>
                   </IonCard>
                 </IonCol>
@@ -132,6 +153,7 @@ const EditPlace: React.FC = () =>{
                     <IonInput
                       value="Sample Price"
                       inputmode="text"
+                      ref = {priceRef}
                     ></IonInput>
                   </IonCard>
                 </IonCol>

@@ -1,5 +1,5 @@
 export class Sp {
-    spId!: string;
+    spId!: number;
     name!: string;
     phone!: number;
     price!: number;

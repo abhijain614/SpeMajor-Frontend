@@ -51,12 +51,12 @@ const Dashboard = () => {
 				</IonHeader>
 				
 				{ records.map((record, index) => {
-
+					//console.log(record.id);
 					const imageURL = record.imageURL ? record.imageURL : "/placeholder.jpeg";
 					const rating = Math.floor(record.rating).toFixed(0);
 
 					return (
-						<IonCard key={ `record_${ index }` } className={ `${ styles.viewCard } animate__animated animate__faster animate__fadeIn` } routerLink={ `/dashboard/editSP/${ record.id }` }>
+						<IonCard key={ `record_${ index }` } className={ `${ styles.viewCard } animate__animated animate__faster animate__fadeIn` } routerLink={ `/dashboard/${ record.id }` }>
 							<div className={ styles.cardImage } style={{ backgroundImage: `url(${ imageURL })` }} />
 							<IonCardHeader>
 
@@ -104,7 +104,7 @@ const Dashboard = () => {
 					</IonFabButton>
 					<IonFabList side="top">
             <IonFabButton><IonIcon icon={add} /></IonFabButton>
-			<IonFabButton><IonIcon icon={powerOutline} /></IonFabButton>
+			<IonFabButton><IonIcon onClick={handleLogout} icon={powerOutline} /></IonFabButton>
           			</IonFabList>
 				 </IonFab>
 			</IonContent>
