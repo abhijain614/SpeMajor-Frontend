@@ -7,8 +7,10 @@ export const fetchRecords = createSelector(getState, state => state.records);
 
 //  More specific getters
 export const fetchRecord = recordId => createSelector(getState, state => {
-
-	return state.records.filter(record => record.id === recordId)[0];
+	console.log("a",state.records[0].id);
+	console.log("b",recordId);
+	console.log(state.records[0].id==recordId);
+	return state.records.filter(record => record.id == recordId)[0];
 });
 // export const getPoll = pollId => createSelector(getState, state => state.polls.filter(poll => poll.id === parseInt(pollId))[0]);
 // export const getChat = contactId => createSelector(getState, state => state.chats.filter(c => parseInt(c.contact_id) === parseInt(contactId))[0].chats);

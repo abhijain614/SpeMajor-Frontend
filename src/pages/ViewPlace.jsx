@@ -21,6 +21,7 @@ const ViewPlace = ({}) => {
 	const { id } = useParams();
 	console.log(id);
 	const record = RecordsStore.useState(fetchRecord(id));
+	console.log(record);
 	const [ extendedRecord, setExtendedRecord ] = useState(false);
 
 	const MapView = () => (
@@ -46,7 +47,7 @@ const ViewPlace = ({}) => {
 
 
 		const getData = async () => {
-
+			console.log("id is:", id);	
 			const extendedData = await getRecord(id);
 			setExtendedRecord(extendedData);
 			dismiss();

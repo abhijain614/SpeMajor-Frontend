@@ -58,17 +58,10 @@ import { update } from "pullstate";
     return response.data;
   };
 
-const EditPlace: React.FC = () =>{ 
+const AddPlace: React.FC = () =>{ 
     const {userJWT} = useAuth();
-    console.log("This is:");
-    console.log(userJWT); 
     const spId   = useParams();
     const id = JSON.parse(JSON.stringify(spId));
-    // console.log(Object.keys(id));
-    // console.log(id);
-    // console.log(id.id);
-    //console.log(object);
-    //console.log(spId);
     const history = useHistory();
     const [error, setError] = useState("");
     const [iserror, setIserror] = useState<boolean>(false);
@@ -78,7 +71,7 @@ const EditPlace: React.FC = () =>{
     const priceRef = useRef<HTMLIonInputElement>(null);
     //const closed = useRef<HTMLIonInputElement>(null);
     const [present, dismiss] = useIonLoading();
-    const saveHandler = () => {
+    const addHandler = () => {
         const enteredName = nameRef.current!.value;
     const enteredPhone = phoneRef.current!.value;
     const enteredPrice = priceRef.current!.value;
@@ -160,7 +153,7 @@ const EditPlace: React.FC = () =>{
               </IonRow>
                   </IonGrid>
               <IonButton
-              onClick={saveHandler}
+              onClick={addHandler}
               className="button-submit"
               slot="end"
               expand="block"
@@ -169,10 +162,10 @@ const EditPlace: React.FC = () =>{
               shape="round"
               // routerLink="/homePage"
             >
-              Update
+              Submit
             </IonButton>
               </IonList>
               </IonPage>)
 };
 
-export default EditPlace;
+export default AddPlace;

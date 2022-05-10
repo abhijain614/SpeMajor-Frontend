@@ -1,5 +1,5 @@
 import { IonButton, IonTabBar,IonTabButton,IonFabList,IonCard,IonFab,IonFabButton, IonCardHeader, IonCardSubtitle, IonContent, IonHeader, IonIcon, IonNote, IonPage, IonRow, IonText, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
-import { arrowForward,listOutline,personOutline, navigateOutline,arrowBackCircle,logOut,powerOutline, arrowUpCircle } from 'ionicons/icons';
+import { arrowForward,listOutline,personOutline,caretUp,chevronUpOutline, navigateOutline,arrowBackCircle,create,chevronUpCircle,logOutOutline,logOut,powerOutline, arrowUpCircle, createOutline, addOutline, arrowUpCircleOutline, chevronUpCircleOutline, chevronBackCircle } from 'ionicons/icons';
 import { RatingStar } from '../components/RatingStar';
 import VendorRecordsStore, { vendorSetStore } from '../store/VendorRecordsStore';
 import { fetchRecords } from '../store/Selectors';
@@ -76,7 +76,7 @@ const Dashboard = () => {
 									</IonText>
 
 									<IonButton size="small" color="primary">
-										<IonIcon icon={ arrowForward } />
+										<IonIcon icon={ createOutline } />
 									</IonButton>
 								</IonRow>
 							</IonCardHeader>
@@ -100,11 +100,11 @@ const Dashboard = () => {
 						</IonFab> */}
 				 <IonFab vertical="bottom" horizontal="end" slot="fixed">
 				 <IonFabButton>
-						<IonIcon icon={arrowUpCircle} />
+						<IonIcon icon={chevronUpOutline} />
 					</IonFabButton>
 					<IonFabList side="top">
             <IonFabButton><IonIcon icon={add} /></IonFabButton>
-			<IonFabButton><IonIcon onClick={handleLogout} icon={powerOutline} /></IonFabButton>
+			<IonFabButton><IonIcon onClick={handleLogout} icon={logOutOutline} /></IonFabButton>
           			</IonFabList>
 				 </IonFab>
 			</IonContent>
