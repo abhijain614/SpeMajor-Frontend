@@ -180,7 +180,7 @@ const ViewPlace = ({}) => {
 												</IonAvatar>
 												<IonCardSubtitle>{ review.user.name }</IonCardSubtitle>
 
-												{/* <IonButton color="primary">Full review on Yelp &rarr;</IonButton> */}
+											
 											</IonRow>
 											<p className="ion-padding-top">{ review.text }</p>
 										</IonLabel>
