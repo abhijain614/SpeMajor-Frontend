@@ -56,7 +56,7 @@ const ViewPlace = ({}) => {
 		present("Fetching extended details...");
 		getData();
 	});
-	//console.log(record.imageURL);
+	//console.log(record.imageURL+"");
 	const imageURL = record.imageURL ? record.imageURL : "/placeholder.jpeg";
 	const rating = Math.floor(record.rating).toFixed(0);
 
