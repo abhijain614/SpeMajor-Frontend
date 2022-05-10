@@ -45,9 +45,9 @@ import VendorRecordsStore, { vendorSetStore } from '../store/VendorRecordsStore'
 import { getVendorRecords } from '../main/yelp';
 import { IonReactRouter } from '@ionic/react-router';  
 import {Action} from '../components/Action'
+import {CONFIG} from '../constants';
 
-
-  const base = "http://172.16.129.244:8080";
+  const base = CONFIG.API_ENDPOINT;
   const showToast = async (msg: string) => {
     await Toast.show({
       text: msg,
@@ -61,7 +61,7 @@ import {Action} from '../components/Action'
       role: "ADMIN"
     };
   
-    const response = await axios.post(base + "/vendor/login", loginData);
+    const response = await axios.post(base + "vendor/login", loginData);
     //   console.log(response);
   
     return response.data;

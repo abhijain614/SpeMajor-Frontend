@@ -2,7 +2,9 @@ import axios from "axios";
 import { setStore } from "../store/RecordsStore";
 import { vendorSetStore } from "../store/VendorRecordsStore";
 
-const baseURL= "http://172.16.129.244:8080/"
+import {CONFIG} from '../constants';
+
+const baseURL = CONFIG.API_ENDPOINT;
 
 export const getRecords = async (currentPoint) => {
 	var latitude = currentPoint.latitude, longitude = currentPoint.longitude, radius = 1000, offset = 0;

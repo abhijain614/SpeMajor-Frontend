@@ -30,8 +30,9 @@ import { update } from "pullstate";
   import axios from "axios";
 
 
-  
-  const base = "http://172.16.129.244:8080";
+  import {CONFIG} from '../constants';
+
+    const base = CONFIG.API_ENDPOINT;
   //Also, the placeholders for the text fields are currently static, bring it from the local store/API call.
   const updatePlaceRequest = async (userJWT: any,spId:number,enteredName: string, enteredPhone: string,enteredPrice: string) => {
     console.log(spId);
@@ -48,7 +49,7 @@ import { update } from "pullstate";
           "Access-Control-Allow-Origin": "*",
       }
     };
-    const response = await axios.put(base + "/vendor/update_storage_point",
+    const response = await axios.put(base + "vendor/update_storage_point",
      updateData,axiosConfig
      );
     //   console.log(response);

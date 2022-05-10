@@ -20,8 +20,9 @@ import {
     import { personCircle } from "ionicons/icons";
     import { useState } from "react";
     import axios from "axios";
+    import {CONFIG} from '../constants';
 
-    const base = "http://172.16.129.244:8080";
+    const base = CONFIG.API_ENDPOINT;
     const signupRequest = async (email: string, mobile: string, password: string) => {
         const signupData = {
             email: email,
@@ -29,7 +30,7 @@ import {
             password: password,
             role: "ADMIN"
           };
-        const response = await axios.post(base + "/vendor/signup", signupData);
+        const response = await axios.post(base + "vendor/signup", signupData);
         return response.data;
     };
 
