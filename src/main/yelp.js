@@ -1,11 +1,8 @@
 import axios from "axios";
-//var cors = require('cors');
 import { setStore } from "../store/RecordsStore";
 import { vendorSetStore } from "../store/VendorRecordsStore";
 
-// let API = axios.create({
-	const baseURL= "http://172.16.129.244:8080/"
-// });
+const baseURL= "http://172.16.129.244:8080/"
 
 export const getRecords = async (currentPoint) => {
 	var latitude = currentPoint.latitude, longitude = currentPoint.longitude, radius = 1000, offset = 0;
@@ -16,17 +13,24 @@ export const getRecords = async (currentPoint) => {
 	};
 	let res=await axios.get(baseURL+"storagepoint/getall",{ params: params });
 	const allRecords = parseDetails(res.data);
+	console.log(allRecords);
 	const data = (JSON.stringify({ allRecords, center: res.data.region.center }));
 	setStore(JSON.parse(data));	
 }  
 
 export const getVendorRecords = async (jwt) => {
 	console.log("Debugging: ",jwt);
-	//var latitude = currentPoint.latitude, longitude = currentPoint.longitude, radius = 1000, offset = 0;
-	const response = await fetch(`http://172.16.129.244:4000/get-vendor-records?authCode=${ jwt }`);
-	const data = await response.json();
-	console.log(data);
-	vendorSetStore(data);
+	let axiosConfig = {
+		headers: {
+			Authorization: jwt,
+			'Content-Type': 'application/json'
+		}
+	  };
+	let res=await axios.get(baseURL+"vendor/getall",axiosConfig);
+	let allRecords=parseDetails2(res.data);
+	let vendorRecs={allRecords};
+	console.log(vendorRecs);
+	vendorSetStore(vendorRecs);
 } 
 
 export const getRecord = async recordId => {
@@ -39,19 +43,13 @@ export const getRecord = async recordId => {
 const parseDetails2 = info => {
 
 	console.log("Parsing details...");
-	//console.log(info);
 	var records = [];
 	var businesses = info;
-	//var total = parsedInfo.total;	
-
 	var distance = 0;
 	var distanceMiles = 0;
 
 	for (var i = 0; i < businesses.length; i++) {
-
 		var id = businesses[i].storagepoint_id;
-		//console.log(id);
-		//var url = businesses[i].url;
 		var imageURL = businesses[i].image_url;
 		var name = businesses[i].name;
 		var alias = businesses[i].alias;
@@ -93,22 +91,17 @@ const parseDetails2 = info => {
 			});
 		}
 	}
-
 	return records;
 }
 
 const parseDetails = info => {
-
 	console.log("Parsing details...");
-	//console.log(info);
 	var records = [];
 	var parsedInfo = info;
 	var businesses = parsedInfo.list;
 	var total = parsedInfo.total;
-
 	var distance = 0;
 	var distanceMiles = 0;
-
 	for (var i = 0; i < businesses.length; i++) {
 
 		var id = businesses[i].storagepoint_id;
@@ -128,33 +121,6 @@ const parseDetails = info => {
 		var longitude = coordinates.longitude;
 
 		var displayAddress = businesses[i].location.display_address;
-
-		// if (businesses[i].location) {
-
-		// 	var addressDetails = businesses[i].location;
-
-		// 	if (addressDetails.display_address) {
-				
-		// 		var displayAddressArr = addressDetails.display_address;
-
-		// 		if (Array.isArray(displayAddressArr)) {
-					
-		// 			for (var j = 0; j < displayAddressArr.length; j++) {
-
-		// 				var displayAddressPart = displayAddressArr[j];
-		// 				displayAddress = displayAddress + displayAddressPart;
-
-		// 				if (j != displayAddressArr.length-1) {
-
-		// 					displayAddress = displayAddress + ", ";
-		// 				}
-		// 			}
-		// 		} else {
-
-		// 			displayAddress = displayAddressArr;
-		// 		}
-		// 	}
-		// }
 
 		if (businesses[i].distance) {
 
