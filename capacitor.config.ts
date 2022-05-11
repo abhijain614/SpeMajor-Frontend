@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.example.app',
-  appName: 'ionic-restaurant-finder',
+  appName: 'neighbors-storage',
   webDir: 'build',
   bundledWebRuntime: false
 };

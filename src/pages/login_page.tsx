@@ -13,7 +13,10 @@ import {
     IonTabBar,
     IonTabButton,
     IonTab,
-    IonTabs
+    IonTabs,
+    IonNav,
+    IonTitle,
+    IonImg
   } from "@ionic/react";
   import Tab1 from './Tab1';
 import Tab2 from './Tab2';
@@ -22,7 +25,7 @@ import ViewPlace from './ViewPlace';
   import React, { useState } from "react";
   import axios from "axios";
   import { IonGrid, IonRow, IonCol, IonCardContent,IonCardTitle } from "@ionic/react";
-  import { personCircle, mapOutline, listOutline } from "ionicons/icons";
+  import { personCircle, mapOutline, listOutline, homeOutline } from "ionicons/icons";
   import { useHistory } from "react-router-dom";
  // import { Redirect } from "react-router";
   import { Network } from "@awesome-cordova-plugins/network";
@@ -151,8 +154,14 @@ import {CONFIG} from '../constants';
     return (
       <IonPage>
         <IonHeader className="IonHeader">
-          <IonToolbar class='ion-text-center'><strong> Neighbor's Storage </strong></IonToolbar>
+          {/* <IonToolbar class='ion-text-center my_iontitle'><strong>Let's Sign In</strong></IonToolbar> */}
+        <IonToolbar>
+          <IonTitle>
+            <IonImg className='logo-style' src='/AppLogo.png'></IonImg>
+          </IonTitle>
+        </IonToolbar>
         </IonHeader>
+        <IonItem className='spacing'></IonItem>
         <IonContent fullscreen>
           <IonAlert
             isOpen={iserror}
@@ -165,18 +174,18 @@ import {CONFIG} from '../constants';
           <IonList>
             <IonItem>
               <IonGrid>
-                <IonRow>
+                <IonRow className='rest-of-app'>
                   <IonCol size="12" className="ion-text-center">
                     <IonIcon
                       color="primary"
-                      style={{ fontSize: "90px", color: "#0040ff" }}
-                      icon={personCircle}
+                      style={{ fontSize: "50px", color: "#0040ff" }}
+                      icon={homeOutline}
                     />
                   </IonCol>
                 </IonRow>
                 <IonRow>
-                  <IonCol size="12" className="ion-text-center">
-                    <IonText className="ion-text-head" color="primary">
+                  <IonCol className="ion-text-center">
+                    <IonText className="ion-text-head my_iontitle" color="primary">
                       <strong>{"Manage Your Storage Points"}</strong>
                     </IonText>
                   </IonCol>
@@ -185,7 +194,7 @@ import {CONFIG} from '../constants';
               </IonGrid>
             </IonItem>
             <IonItem>
-              <IonText className="ion-text-subhead">{"Email"}</IonText>
+              <IonText className="ion-text-subhead my_iontitle">{"Email"}</IonText>
             </IonItem>
             <IonCard className="ion-card">
               <IonInput
@@ -194,7 +203,7 @@ import {CONFIG} from '../constants';
               ></IonInput>
             </IonCard>
             <IonItem>
-              <IonText className="ion-text-subhead">{"Password"}</IonText>
+              <IonText className="ion-text-subhead my_iontitle">{"Password"}</IonText>
             </IonItem>
             <IonCard className="ion-card">
               <IonInput
@@ -203,9 +212,9 @@ import {CONFIG} from '../constants';
                 onIonChange={(e) => setPassword(e.detail.value!)}
               ></IonInput>
             </IonCard>
-            <IonItem></IonItem>
+            <IonItem className='spacing'></IonItem>
             <IonButton
-              className="button-submit"
+              className="button-submit my_iontitle"
               slot="end"
               expand="block"
               color="primary"
@@ -214,17 +223,17 @@ import {CONFIG} from '../constants';
               onClick={handleLogin}
               // routerLink="/dashboard"
               >
-              Login
+              Sign in
             </IonButton>
-            
+            <Action message="Don't have an account?" text="Signup" link="/signup" />
           </IonList>
           
           <IonLoading isOpen={loading} />
         </IonContent>
         <IonFooter>
-				<IonGrid className="ion-no-margin ion-no-padding">
+				{/* <IonGrid className="ion-no-margin ion-no-padding">
                     <Action message="Don't have an account?" text="Signup" link="/signup" />
-				</IonGrid>
+				</IonGrid> */}
 			</IonFooter>
       </IonPage>
     );

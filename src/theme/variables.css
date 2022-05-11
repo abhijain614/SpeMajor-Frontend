@@ -3,13 +3,24 @@ http://ionicframework.com/docs/theming/ */
 /* .my_button{
   padding-left: 0 !important;
 } */
+.rest-of-app{
+  margin-top: 1rem;
+}
+.logo-style{
+  height:2.4rem;
+}
+.spacing{
+  height: 1.2rem;
+}
 .price{
   font-size:large;
   float: right !important;
 }
 .my_iontitle{
   font-size: large !important;
-  padding-left: 0 !important;
+  font-family:Arial, Helvetica, sans-serif !important;
+}
+*{
   font-family:Arial, Helvetica, sans-serif !important;
 }
 /** Ionic CSS Variables **/

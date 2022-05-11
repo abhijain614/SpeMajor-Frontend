@@ -44,15 +44,11 @@ const Dashboard = () => {
 				</IonToolbar>
 			</IonHeader>
 			<IonContent fullscreen>
-				<IonHeader collapse="condense">
-					<IonToolbar>
-						<IonTitle size="large">Feeling hungry?</IonTitle>
-					</IonToolbar>
-				</IonHeader>
+				
 				
 				{ records.map((record, index) => {
 					//console.log(record.id);
-					const imageURL = record.imageURL ? record.imageURL : "/placeholder.jpeg";
+					const imageURL = record.imageURL ? record.imageURL : "/placeholder.jpg";
 					const rating = Math.floor(record.rating).toFixed(0);
 
 					return (

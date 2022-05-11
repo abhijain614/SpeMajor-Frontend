@@ -57,7 +57,7 @@ const ViewPlace = ({}) => {
 		getData();
 	});
 	//console.log(record.imageURL+"");
-	const imageURL = record.imageURL ? record.imageURL : "/placeholder.jpeg";
+	const imageURL = record.imageURL ? record.imageURL : "/placeholder.jpg";
 	const rating = Math.floor(record.rating).toFixed(0);
 
 	const [ presentModal, dismissModal ] = useIonModal(MapView);

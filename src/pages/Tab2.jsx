@@ -14,7 +14,7 @@ const Tab2 = () => {
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
-				<IonTitle className='my_iontitle'>Explore Nearby Storage Points</IonTitle>
+				<IonTitle className='my_iontitle'>Explore Storage Points</IonTitle>
 				<IonButtons slot="start">
 				<IonBackButton size="small"/>
 				</IonButtons>
@@ -43,7 +43,7 @@ const Tab2 = () => {
 								</IonText>
 								
 
-								<IonCardSubtitle>{ record.name }</IonCardSubtitle>
+								<IonCardSubtitle className='my_iontitle'>{ record.name }</IonCardSubtitle>
 								<IonNote color="medium">{ record.displayAddress }</IonNote>
 
 								<IonRow className="ion-justify-content-between ion-align-items-center">

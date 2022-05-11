@@ -15,9 +15,11 @@ import {
       IonInput,
       IonButton,
       IonIcon,
-      IonAlert
+      IonAlert,
+      IonTitle,
+      IonImg
     } from "@ionic/react";
-    import { personCircle } from "ionicons/icons";
+    import { personCircle,homeOutline } from "ionicons/icons";
     import { useState } from "react";
     import axios from "axios";
     import {CONFIG} from '../constants';
@@ -81,8 +83,13 @@ const SignupPage: React.FC = () => {
     return (
         <IonPage>
           <IonHeader className="IonHeader">
-            <IonToolbar class='ion-text-center'><strong> Neighbor's Storage </strong></IonToolbar>
+          <IonToolbar>
+          <IonTitle>
+            <IonImg className='logo-style' src='/AppLogo.png'></IonImg>
+          </IonTitle>
+        </IonToolbar>
           </IonHeader>
+          <IonItem className='spacing'></IonItem>
           <IonContent fullscreen>
             <IonAlert
               isOpen={iserror}
@@ -99,15 +106,15 @@ const SignupPage: React.FC = () => {
                     <IonCol size="12" className="ion-text-center">
                       <IonIcon
                         color="primary"
-                        style={{ fontSize: "90px", color: "#0040ff" }}
-                        icon={personCircle}
+                        style={{ fontSize: "50px", color: "#0040ff" }}
+                        icon={homeOutline}
                       />
                     </IonCol>
                   </IonRow>
                   <IonRow>
-                    <IonCol size="12" className="ion-text-center">
-                      <IonText className="ion-text-head" color="primary">
-                        <strong>{"Become a Storage Service Provider!"}</strong>
+                    <IonCol className="ion-text-center">
+                      <IonText className="ion-text-head my_iontitle" color="primary">
+                        <strong>{"Become a Storage Provider!"}</strong>
                       </IonText>
                     </IonCol>
                   </IonRow>
@@ -142,9 +149,9 @@ const SignupPage: React.FC = () => {
                   onIonChange={(e) => setPassword(e.detail.value!)}
                 ></IonInput>
               </IonCard>
-              <IonItem></IonItem>
+              <IonItem className="spacing"></IonItem>
               <IonButton
-                className="button-submit"
+                className="button-submit my_iontitle"
                 slot="end"
                 expand="block"
                 color="primary"
@@ -153,7 +160,7 @@ const SignupPage: React.FC = () => {
                 onClick={handleSignup}
                  routerLink="/login"
                 >
-                Signup
+                Create Account
               </IonButton>
               
             </IonList>
