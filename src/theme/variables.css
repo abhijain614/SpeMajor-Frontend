@@ -1,6 +1,17 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
-
+/* .my_button{
+  padding-left: 0 !important;
+} */
+.price{
+  font-size:large;
+  float: right !important;
+}
+.my_iontitle{
+  font-size: large !important;
+  padding-left: 0 !important;
+  font-family:Arial, Helvetica, sans-serif !important;
+}
 /** Ionic CSS Variables **/
 :root {
   /** primary **/

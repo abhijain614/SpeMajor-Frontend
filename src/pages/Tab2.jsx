@@ -14,18 +14,15 @@ const Tab2 = () => {
 		<IonPage>
 			<IonHeader>
 				<IonToolbar>
+				<IonTitle className='my_iontitle'>Explore Nearby Storage Points</IonTitle>
 				<IonButtons slot="start">
-				<IonBackButton text="Explore Nearby Storage Points"/>
+				<IonBackButton size="small"/>
 				</IonButtons>
+					
 				</IonToolbar>
 				
 			</IonHeader>
 			<IonContent fullscreen>
-				<IonHeader collapse="condense">
-					<IonToolbar>
-						<IonTitle size="large">Feeling hungry?</IonTitle>
-					</IonToolbar>
-				</IonHeader>
 
 				{ records.map((record, index) => {
 
@@ -36,11 +33,15 @@ const Tab2 = () => {
 						<IonCard key={ `record_${ index }` } className={ `${ styles.viewCard } animate__animated animate__faster animate__fadeIn` } routerLink={ `/list/${ record.id }` }>
 							<div className={ styles.cardImage } style={{ backgroundImage: `url(${ imageURL })` }} />
 							<IonCardHeader>
-
+								
 								{ Array.apply(null, { length: 5 }).map((e, i) => (
-
-									<RatingStar key={ i } rated={ rating > i } />
+								<RatingStar key={ i } rated={ rating > i } />
 								))}
+								
+								<IonText className='price'>
+								₹​{record.price}
+								</IonText>
+								
 
 								<IonCardSubtitle>{ record.name }</IonCardSubtitle>
 								<IonNote color="medium">{ record.displayAddress }</IonNote>

@@ -70,9 +70,9 @@ const ViewPlace = ({}) => {
 				<IonToolbar>
 
 					<IonButtons slot="start">
-						<IonBackButton text="Back" />
+						<IonBackButton size="small" />
 					</IonButtons>
-					<IonTitle>{ record.distance } miles away</IonTitle>
+					<IonTitle className="my_iontitle">{ record.distance } miles away</IonTitle>
 				</IonToolbar>
 			</IonHeader>
 			<IonContent fullscreen>
