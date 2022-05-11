@@ -16,4 +16,4 @@ COPY . .
 # COPY ./resources/gitignore .gitignore
 # RUN sed -i -e "s/node scripts\/build.js/node scripts\/build.js && npx cap sync/g" package.json
 
-CMD REACT_APP_API_URL=172.16.131.59 ionic serve
+ENTRYPOINT ionic serve
