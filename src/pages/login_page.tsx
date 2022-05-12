@@ -230,11 +230,11 @@ import {CONFIG} from '../constants';
           
           <IonLoading isOpen={loading} />
         </IonContent>
-        <IonFooter>
-				{/* <IonGrid className="ion-no-margin ion-no-padding">
+        {/* <IonFooter>
+				<IonGrid className="ion-no-margin ion-no-padding">
                     <Action message="Don't have an account?" text="Signup" link="/signup" />
-				</IonGrid> */}
-			</IonFooter>
+				</IonGrid>
+			</IonFooter> */}
       </IonPage>
     );
   };

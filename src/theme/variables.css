@@ -17,7 +17,7 @@ http://ionicframework.com/docs/theming/ */
   float: right !important;
 }
 .my_iontitle{
-  font-size: large !important;
+  /* font-size: large !important; */
   font-family:Arial, Helvetica, sans-serif !important;
 }
 *{
