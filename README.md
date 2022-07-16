@@ -1,4 +1,8 @@
-## Neighbour’s Storage App
+# Neighbour’s Storage App
+
+<img src="https://github.com/abhijain614/SpeMajor-Frontend/blob/main/public/AppLogo.png" width="250">
+
+### “The Airbnb for storage solutions.”
 
 Imagine visiting a new town, and then coming up with instant plans such as attending that famous event in the town/ greeting some of your acquaintances/ visiting that famous tourist spot in the town but you hesitate, because you are heavy on luggage and most importantly... where will you keep it? You surely don’t want to rent out a hotel just to
 keep your luggage safe for the day. All you want is someone who can take care of that extra luggage so that you can travel with peace. Most of us have already faced such problems while traveling.
