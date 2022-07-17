@@ -1,8 +1,30 @@
 # Neighbour’s Storage App
 
-<img src="https://github.com/abhijain614/SpeMajor-Frontend/blob/main/public/AppLogo.png" width="250">
+<br>
 
-### “The Airbnb for storage solutions.”
+<p float="left">
+<img src="https://github.com/abhijain614/SpeMajor-Frontend/blob/main/public/AppLogo.png" width="250">
+</p>
+
+## “The Airbnb for storage solutions.”
+
+<br>
+
+<p float="left">
+  <img src="https://www.dropbox.com/s/ns5r81lvkelu7xp/Screenshot%20from%202022-05-12%2011-39-24.png?raw=1" width="150">
+  &nbsp; &nbsp;
+  <img src="https://www.dropbox.com/s/6k7new6fphseb7t/Screenshot%20from%202022-05-12%2011-39-59.png?raw=1" width="150">
+  &nbsp; &nbsp;
+  <img src="https://www.dropbox.com/s/q6cictxe5o6ubfp/Screenshot%20from%202022-05-12%2011-45-03.png?raw=1" width="150">
+  &nbsp; &nbsp;
+  <img src="https://www.dropbox.com/s/ymlx1hgrsxhxn7a/Screenshot%20from%202022-05-12%2011-42-52.png?raw=1" width="150">
+  &nbsp; &nbsp;
+  <img src="https://www.dropbox.com/s/37ifwxrifzroh07/Screenshot%20from%202022-05-12%2011-40-52.png?raw=1" width="150">
+  &nbsp; &nbsp;
+  <img src="https://www.dropbox.com/s/xte4ech0x5up4pf/Screenshot%20from%202022-05-12%2011-41-38.png?raw=1" width="150">  
+</p>
+
+<br>
 
 Imagine visiting a new town, and then coming up with instant plans such as attending that famous event in the town/ greeting some of your acquaintances/ visiting that famous tourist spot in the town but you hesitate, because you are heavy on luggage and most importantly... where will you keep it? You surely don’t want to rent out a hotel just to
 keep your luggage safe for the day. All you want is someone who can take care of that extra luggage so that you can travel with peace. Most of us have already faced such problems while traveling.
