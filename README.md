@@ -44,7 +44,7 @@ In turn, city residents like households and shopkeepers can use the free space t
 
 UI: Ionic React Framework
 
-For Android native permissions: Capacitor, Cordova Plugin
+For Android native permissions: Capacitor
 
 APIs: PigeonMaps
 
