@@ -1,3 +1,4 @@
+// Storage point class
 export class Sp {
     spId!: number;
     name!: string;
